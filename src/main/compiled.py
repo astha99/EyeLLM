@@ -13,7 +13,7 @@ from similarityScores import (
 )
 import openai
 
-openai.api_key = "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"
+openai.api_key = "######"
 
 # Define input paths
 json_files = glob.glob("data/json/*.json")
