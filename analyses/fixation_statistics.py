@@ -2,11 +2,10 @@ import os
 import glob
 import re
 
-import nltk
 from nltk.corpus import stopwords
 # nltk.download('stopwords')
 import pandas as pd
-from dataWrangling import (
+from src.main.dataWrangling import (
     get_completion,
     find_less_sustained_reading_examples,
     get_fixations,
@@ -15,7 +14,7 @@ from dataWrangling import (
 
 # Paths
 json_files = glob.glob("data/json/*.json")
-output_dir = "results/DataStats/"
+output_dir = "../results/DataStats/"
 os.makedirs(output_dir, exist_ok=True)
 output_file = os.path.join(output_dir, "hesitation_events.csv")
 
@@ -25,7 +24,7 @@ all_rows = []
 # Loop through each JSON file
 for json_file in json_files:
     tokenid = os.path.basename(json_file).replace("_incremental.json", "")
-    student_prompt = get_student_prompt(tokenid, "data/promptid.csv")
+    student_prompt = get_student_prompt(tokenid, "../data/promptid.csv")
     examples = find_less_sustained_reading_examples(json_file)
     fixated_data = get_fixations(json_file, examples, n=3)
     example_id = 1  # start from 1

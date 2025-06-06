@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
 # Directory path
-dir_path = 'results/BEA/ci/'
+dir_path = '../results/BEA/ci/'
 
 condition_name_map = {
     'Pretext Only': 'Baseline',

@@ -2,7 +2,7 @@ import pandas as pd
 import scipy.stats as stats
 
 # Load your long-format CSV
-df = pd.read_csv("results/BEA/compiled/cleaned/mistral.csv")  # Update path if needed
+df = pd.read_csv("../results/BEA/compiled/cleaned/mistral.csv")  # Update path if needed
 
 # Function to compute mean, std, and 95% CI
 def compute_ci(group):
