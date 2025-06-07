@@ -1,0 +1,819 @@
+RQ1: Comparisons by LLM
+
+
+
+
+** LLM =  GPT3.5 
+
+
+
+
+*** Metric: SEMANTIC
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance Chisq Df Pr(>Chisq)    
+model0   12 -158500 -158400  79262  -158524                        
+model    15 -158522 -158396  79276  -158552 28.06  3  3.528e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -158499.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-9.2417 -0.5999  0.0199  0.6113  4.8614 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        1.516e-03 0.038935                  
+              conditionBaseline  6.474e-05 0.008046 -0.08            
+              conditionSentences 1.347e-04 0.011608 -0.12  0.22      
+              conditionWords     7.279e-05 0.008532 -0.11  0.34  0.34
+ Residual                        3.901e-04 0.019751                  
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                     Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)         8.075e-01  1.375e-03  8.210e+02 587.075  < 2e-16 ***
+conditionBaseline  -8.390e-04  4.167e-04  8.210e+02  -2.013  0.04442 *  
+conditionSentences  1.578e-03  5.088e-04  8.210e+02   3.102  0.00199 ** 
+conditionWords      1.167e-03  4.283e-04  8.210e+02   2.725  0.00656 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.139              
+cndtnSntncs -0.162  0.340       
+conditnWrds -0.158  0.427  0.405
+
+
+
+*** Metric: JACCARD
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)   
+model0   12 -145236 -145135  72630  -145260                        
+model    15 -145246 -145120  72638  -145276 16.119  3   0.001072 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -145224.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-8.0356 -0.5627 -0.0406  0.5272 10.4442 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        1.859e-03 0.043115                  
+              conditionBaseline  8.529e-05 0.009235  0.00            
+              conditionSentences 2.528e-04 0.015900 -0.16  0.13      
+              conditionWords     1.027e-04 0.010132  0.04  0.16  0.43
+ Residual                        5.855e-04 0.024197                  
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                     Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)         8.229e-02  1.527e-03  8.207e+02  53.882  < 2e-16 ***
+conditionBaseline   1.169e-04  4.962e-04  8.206e+02   0.236 0.813777    
+conditionSentences -1.475e-04  6.708e-04  8.209e+02  -0.220 0.825984    
+conditionWords      1.780e-03  5.171e-04  8.210e+02   3.442 0.000606 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.094              
+cndtnSntncs -0.197  0.285       
+conditnWrds -0.065  0.347  0.448
+
+
+
+*** Metric: F1
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)   
+model0   12 -112075 -111975  56050  -112099                        
+model    15 -112085 -111959  56057  -112115 15.441  3   0.001476 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -112067.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-8.0315 -0.5658 -0.0280  0.5542  7.8357 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        0.0052891 0.07273                   
+              conditionBaseline  0.0002418 0.01555  -0.02            
+              conditionSentences 0.0006519 0.02553  -0.17  0.15      
+              conditionWords     0.0002787 0.01669   0.02  0.15  0.44
+ Residual                        0.0016055 0.04007                   
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                     Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)         1.483e-01  2.575e-03  8.211e+02  57.593  < 2e-16 ***
+conditionBaseline   1.249e-04  8.275e-04  8.210e+02   0.151 0.880096    
+conditionSentences -3.110e-04  1.088e-03  8.210e+02  -0.286 0.775061    
+conditionWords      2.835e-03  8.542e-04  8.210e+02   3.319 0.000942 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.105              
+cndtnSntncs -0.204  0.297       
+conditnWrds -0.078  0.343  0.453
+
+
+
+** LLM =  GPT4 
+
+
+
+
+*** Metric: SEMANTIC
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model0   12 -161907 -161806  80965  -161931                         
+model    15 -161966 -161840  80998  -161996 65.493  3  3.935e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -161943.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.6443 -0.5467  0.0307  0.5860  5.9811 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        1.487e-03 0.038556                  
+              conditionBaseline  8.165e-05 0.009036 -0.10            
+              conditionSentences 1.749e-04 0.013224 -0.04  0.22      
+              conditionWords     1.248e-04 0.011172 -0.10  0.30  0.60
+ Residual                        3.445e-04 0.018560                  
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                     Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)         8.078e-01  1.360e-03  8.210e+02 593.846  < 2e-16 ***
+conditionBaseline  -2.232e-03  4.280e-04  8.210e+02  -5.215 2.33e-07 ***
+conditionSentences  2.266e-03  5.446e-04  8.210e+02   4.160 3.51e-05 ***
+conditionWords      1.137e-03  4.855e-04  8.210e+02   2.343   0.0194 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.148              
+cndtnSntncs -0.092  0.320       
+conditnWrds -0.145  0.377  0.568
+
+
+
+*** Metric: JACCARD
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)
+model0   12 -148684 -148584  74354  -148708                     
+model    15 -148682 -148556  74356  -148712 3.4363  3     0.3291
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -148661.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-9.4253 -0.5338 -0.0281  0.5057  6.7974 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        0.0015236 0.03903                   
+              conditionBaseline  0.0001270 0.01127  -0.01            
+              conditionSentences 0.0004094 0.02023  -0.02  0.23      
+              conditionWords     0.0001762 0.01328  -0.02  0.31  0.51
+ Residual                        0.0005151 0.02269                   
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                    Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)        7.325e-02  1.384e-03 8.210e+02  52.915   <2e-16 ***
+conditionBaseline  2.938e-04  5.290e-04 8.210e+02   0.555   0.5787    
+conditionSentences 1.136e-03  7.895e-04 8.210e+02   1.438   0.1507    
+conditionWords     1.000e-03  5.829e-04 8.210e+02   1.716   0.0865 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.090              
+cndtnSntncs -0.079  0.304       
+conditnWrds -0.093  0.386  0.499
+
+
+
+*** Metric: F1
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)
+model0   12 -114418 -114317  57221  -114442                     
+model    15 -114415 -114289  57222  -114445 2.6835  3      0.443
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -114398.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-7.5401 -0.5387 -0.0208  0.5297  6.2326 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        0.0045345 0.06734                   
+              conditionBaseline  0.0003552 0.01885  -0.02            
+              conditionSentences 0.0010091 0.03177  -0.03  0.24      
+              conditionWords     0.0004843 0.02201  -0.03  0.30  0.53
+ Residual                        0.0014647 0.03827                   
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                    Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)        1.332e-01  2.386e-03 8.210e+02  55.834   <2e-16 ***
+conditionBaseline  3.350e-04  8.879e-04 8.210e+02   0.377    0.706    
+conditionSentences 1.478e-03  1.259e-03 8.210e+02   1.174    0.241    
+conditionWords     1.505e-03  9.724e-04 8.210e+02   1.548    0.122    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.097              
+cndtnSntncs -0.089  0.315       
+conditnWrds -0.098  0.382  0.512
+
+
+
+** LLM =  MISTRAL 
+
+
+
+
+*** Metric: SEMANTIC
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model0   12 -151361 -151260  75692  -151385                         
+model    15 -151399 -151273  75714  -151429 43.918  3  1.571e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -151376.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.9958 -0.6196  0.0272  0.6343  4.5383 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        1.381e-03 0.037159                  
+              conditionBaseline  6.165e-05 0.007852 -0.07            
+              conditionSentences 1.326e-04 0.011516 -0.12  0.22      
+              conditionWords     6.800e-05 0.008246 -0.12  0.35  0.44
+ Residual                        4.944e-04 0.022235                  
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                     Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)         7.935e-01  1.319e-03  8.210e+02 601.587  < 2e-16 ***
+conditionBaseline  -1.604e-03  4.419e-04  8.210e+02  -3.630 0.000301 ***
+conditionSentences  9.794e-04  5.307e-04  8.210e+02   1.846 0.065320 .  
+conditionWords      1.482e-03  4.506e-04  8.210e+02   3.289 0.001049 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.146              
+cndtnSntncs -0.178  0.358       
+conditnWrds -0.175  0.442  0.465
+
+
+
+*** Metric: JACCARD
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model0   12 -146874 -146773  73449  -146898                         
+model    15 -146888 -146762  73459  -146918 19.536  3  0.0002118 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -146865.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.6200 -0.5598 -0.0370  0.5460  9.3631 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        1.416e-03 0.037636                  
+              conditionBaseline  6.502e-05 0.008064 -0.01            
+              conditionSentences 1.874e-04 0.013689 -0.10  0.22      
+              conditionWords     6.875e-05 0.008292  0.10  0.25  0.42
+ Residual                        5.671e-04 0.023814                  
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                    Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)        6.725e-02  1.339e-03 8.210e+02  50.236  < 2e-16 ***
+conditionBaseline  9.273e-04  4.659e-04 8.210e+02   1.990   0.0469 *  
+conditionSentences 5.219e-04  6.049e-04 8.210e+02   0.863   0.3886    
+conditionWords     2.003e-03  4.708e-04 8.210e+02   4.255 2.33e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.115              
+cndtnSntncs -0.161  0.351       
+conditnWrds -0.050  0.407  0.448
+
+
+
+*** Metric: F1
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model0   12 -112111 -112010  56067  -112135                         
+model    15 -112124 -111998  56077  -112154 19.972  3   0.000172 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -112106.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.0966 -0.5653 -0.0333  0.5731  6.4064 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        0.0043181 0.06571                   
+              conditionBaseline  0.0001838 0.01356  -0.04            
+              conditionSentences 0.0005118 0.02262  -0.12  0.22      
+              conditionWords     0.0001819 0.01349   0.06  0.24  0.42
+ Residual                        0.0016331 0.04041                   
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                    Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)        1.228e-01  2.335e-03 8.210e+02  52.592  < 2e-16 ***
+conditionBaseline  1.587e-03  7.880e-04 8.210e+02   2.015   0.0443 *  
+conditionSentences 8.114e-04  1.010e-03 8.210e+02   0.803   0.4219    
+conditionWords     3.369e-03  7.865e-04 8.210e+02   4.283 2.06e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.129              
+cndtnSntncs -0.173  0.354       
+conditnWrds -0.073  0.407  0.445
+
+
+
+** LLM =  LLAMA3 
+
+
+
+
+*** Metric: SEMANTIC
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)  
+model0   12 -150001 -149901  75013  -150025                       
+model    15 -150006 -149880  75018  -150036 10.528  3    0.01457 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -149984
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.3902 -0.5832  0.0294  0.6031  5.1237 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        1.556e-03 0.039444                  
+              conditionBaseline  6.698e-05 0.008184 -0.15            
+              conditionSentences 1.687e-04 0.012989 -0.22  0.32      
+              conditionWords     8.532e-05 0.009237 -0.17  0.43  0.30
+ Residual                        5.121e-04 0.022630                  
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                    Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)        7.945e-01  1.398e-03 8.210e+02 568.247  < 2e-16 ***
+conditionBaseline  1.254e-03  4.540e-04 8.210e+02   2.762  0.00588 ** 
+conditionSentences 1.326e-03  5.743e-04 8.210e+02   2.310  0.02115 *  
+conditionWords     1.208e-03  4.779e-04 8.210e+02   2.528  0.01167 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.189              
+cndtnSntncs -0.245  0.398       
+conditnWrds -0.209  0.469  0.389
+
+
+
+*** Metric: JACCARD
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)
+model0   12 -141804 -141704  70914  -141828                     
+model    15 -141799 -141673  70915  -141829 0.6844  3     0.8769
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -141778.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-8.4168 -0.5144 -0.0231  0.4789 10.2923 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        1.772e-03 0.042089                  
+              conditionBaseline  9.097e-05 0.009538 -0.07            
+              conditionSentences 3.043e-04 0.017444 -0.07  0.07      
+              conditionWords     1.231e-04 0.011095 -0.16  0.29  0.19
+ Residual                        6.503e-04 0.025501                  
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                    Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)        7.495e-02  1.495e-03 8.210e+02  50.142   <2e-16 ***
+conditionBaseline  2.071e-04  5.185e-04 8.210e+02   0.399    0.690    
+conditionSentences 3.623e-04  7.269e-04 8.210e+02   0.498    0.618    
+conditionWords     4.325e-04  5.550e-04 8.210e+02   0.779    0.436    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.144              
+cndtnSntncs -0.131  0.249       
+conditnWrds -0.208  0.403  0.308
+
+
+
+*** Metric: F1
+
+
+### Improvement of model fit M0 vs. M1 ###
+Data: filtered_df
+Models:
+model0: similarity_score ~ 1 + (1 + condition | x_example_id)
+model: similarity_score ~ condition + (1 + condition | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)
+model0   12 -108609 -108508  54316  -108633                     
+model    15 -108604 -108478  54317  -108634 0.7815  3     0.8539
+
+### Significance of coefficients in M1 ###
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: similarity_score ~ condition + (1 + condition | x_example_id)
+   Data: filtered_df
+
+REML criterion at convergence: -108587.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-6.0559 -0.5243 -0.0207  0.5100  7.8382 
+
+Random effects:
+ Groups       Name               Variance  Std.Dev. Corr             
+ x_example_id (Intercept)        0.0052015 0.07212                   
+              conditionBaseline  0.0002539 0.01593  -0.07            
+              conditionSentences 0.0008072 0.02841  -0.10  0.14      
+              conditionWords     0.0003430 0.01852  -0.16  0.27  0.23
+ Residual                        0.0017831 0.04223                   
+Number of obs: 32880, groups:  x_example_id, 822
+
+Fixed effects:
+                    Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)        1.356e-01  2.558e-03 8.210e+02  53.007   <2e-16 ***
+conditionBaseline  4.233e-04  8.618e-04 8.210e+02   0.491    0.623    
+conditionSentences 3.643e-04  1.190e-03 8.210e+02   0.306    0.760    
+conditionWords     8.017e-04  9.226e-04 8.210e+02   0.869    0.385    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnB cndtnS
+conditnBsln -0.140              
+cndtnSntncs -0.152  0.285       
+conditnWrds -0.205  0.396  0.330
+
+
+RQ2: Comparisons across all LLMs
+
+
+
+** Metric: SEMANTIC
+
+$anova_01
+Data: subset
+Models:
+model0: similarity_score ~ 1 + (1 | x_example_id)
+model1: similarity_score ~ 0 + condition + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model0    3 -588876 -588847 294441  -588882                         
+model1    6 -589061 -589003 294537  -589073 190.91  3  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$anova_12
+Data: subset
+Models:
+model1: similarity_score ~ 0 + condition + (1 | x_example_id)
+model2: similarity_score ~ 0 + condition + llm + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model1    6 -589061 -589003 294537  -589073                         
+model2    9 -598686 -598598 299352  -598704 9630.3  3  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$anova_23
+Data: subset
+Models:
+model2: similarity_score ~ 0 + condition + llm + (1 | x_example_id)
+model3: similarity_score ~ 0 + llm + condition + llm:condition + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model2    9 -598686 -598598 299352  -598704                         
+model3   18 -598758 -598582 299397  -598794 90.796  9  1.127e-15 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$pairwise_comparisons
+ contrast          estimate      SE  df z.ratio p.value
+ gpt3.5 - gpt4    -0.000164 0.00019 Inf  -0.865  0.8231
+ gpt3.5 - llama3   0.012440 0.00019 Inf  65.406  <.0001
+ gpt3.5 - mistral  0.014179 0.00019 Inf  74.551  <.0001
+ gpt4 - llama3     0.012605 0.00019 Inf  66.271  <.0001
+ gpt4 - mistral    0.014344 0.00019 Inf  75.416  <.0001
+ llama3 - mistral  0.001739 0.00019 Inf   9.144  <.0001
+
+Results are averaged over the levels of: condition 
+Degrees-of-freedom method: asymptotic 
+P value adjustment: tukey method for comparing a family of 4 estimates 
+
+$pairwise_comparisons_2
+ contrast              estimate      SE  df z.ratio p.value
+ Control - Baseline    0.000855 0.00019 Inf   4.496  <.0001
+ Control - Sentences  -0.001537 0.00019 Inf  -8.083  <.0001
+ Control - Words      -0.001249 0.00019 Inf  -6.565  <.0001
+ Baseline - Sentences -0.002393 0.00019 Inf -12.580  <.0001
+ Baseline - Words     -0.002104 0.00019 Inf -11.061  <.0001
+ Sentences - Words     0.000289 0.00019 Inf   1.519  0.4263
+
+Results are averaged over the levels of: llm 
+Degrees-of-freedom method: asymptotic 
+P value adjustment: tukey method for comparing a family of 4 estimates 
+
+
+
+** Metric: JACCARD
+
+$anova_01
+Data: subset
+Models:
+model0: similarity_score ~ 1 + (1 | x_example_id)
+model1: similarity_score ~ 0 + condition + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model0    3 -551615 -551586 275811  -551621                         
+model1    6 -551644 -551586 275828  -551656 34.866  3    1.3e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$anova_12
+Data: subset
+Models:
+model1: similarity_score ~ 0 + condition + (1 | x_example_id)
+model2: similarity_score ~ 0 + condition + llm + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model1    6 -551644 -551586 275828  -551656                         
+model2    9 -555894 -555806 277956  -555912 4255.8  3  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$anova_23
+Data: subset
+Models:
+model2: similarity_score ~ 0 + condition + llm + (1 | x_example_id)
+model3: similarity_score ~ 0 + llm + condition + llm:condition + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)  
+model2    9 -555894 -555806 277956  -555912                       
+model3   18 -555896 -555720 277966  -555932 19.913  9    0.01846 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$pairwise_comparisons
+ contrast         estimate       SE  df z.ratio p.value
+ gpt3.5 - gpt4     0.00888 0.000224 Inf  39.626  <.0001
+ gpt3.5 - llama3   0.00753 0.000224 Inf  33.620  <.0001
+ gpt3.5 - mistral  0.01462 0.000224 Inf  65.253  <.0001
+ gpt4 - llama3    -0.00135 0.000224 Inf  -6.006  <.0001
+ gpt4 - mistral    0.00574 0.000224 Inf  25.627  <.0001
+ llama3 - mistral  0.00709 0.000224 Inf  31.633  <.0001
+
+Results are averaged over the levels of: condition 
+Degrees-of-freedom method: asymptotic 
+P value adjustment: tukey method for comparing a family of 4 estimates 
+
+$pairwise_comparisons_2
+ contrast              estimate       SE  df z.ratio p.value
+ Control - Baseline   -3.86e-04 0.000224 Inf  -1.724  0.3109
+ Control - Sentences  -4.68e-04 0.000224 Inf  -2.090  0.1565
+ Control - Words      -1.30e-03 0.000224 Inf  -5.821  <.0001
+ Baseline - Sentences -8.18e-05 0.000224 Inf  -0.365  0.9834
+ Baseline - Words     -9.18e-04 0.000224 Inf  -4.096  0.0002
+ Sentences - Words    -8.36e-04 0.000224 Inf  -3.731  0.0011
+
+Results are averaged over the levels of: llm 
+Degrees-of-freedom method: asymptotic 
+P value adjustment: tukey method for comparing a family of 4 estimates 
+
+
+
+** Metric: F1
+
+$anova_01
+Data: subset
+Models:
+model0: similarity_score ~ 1 + (1 | x_example_id)
+model1: similarity_score ~ 0 + condition + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model0    3 -416915 -416885 208460  -416921                         
+model1    6 -416943 -416884 208477  -416955 34.331  3  1.686e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$anova_12
+Data: subset
+Models:
+model1: similarity_score ~ 0 + condition + (1 | x_example_id)
+model2: similarity_score ~ 0 + condition + llm + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)    
+model1    6 -416943 -416884 208477  -416955                         
+model2    9 -421301 -421213 210659  -421319 4363.6  3  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$anova_23
+Data: subset
+Models:
+model2: similarity_score ~ 0 + condition + llm + (1 | x_example_id)
+model3: similarity_score ~ 0 + llm + condition + llm:condition + (1 | x_example_id)
+       npar     AIC     BIC logLik deviance  Chisq Df Pr(>Chisq)  
+model2    9 -421301 -421213 210659  -421319                       
+model3   18 -421300 -421124 210668  -421336 17.298  9    0.04424 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$pairwise_comparisons
+ contrast         estimate       SE  df z.ratio p.value
+ gpt3.5 - gpt4     0.01488 0.000374 Inf  39.838  <.0001
+ gpt3.5 - llama3   0.01295 0.000374 Inf  34.663  <.0001
+ gpt3.5 - mistral  0.02471 0.000374 Inf  66.149  <.0001
+ gpt4 - llama3    -0.00193 0.000374 Inf  -5.176  <.0001
+ gpt4 - mistral    0.00983 0.000374 Inf  26.311  <.0001
+ llama3 - mistral  0.01176 0.000374 Inf  31.487  <.0001
+
+Results are averaged over the levels of: condition 
+Degrees-of-freedom method: asymptotic 
+P value adjustment: tukey method for comparing a family of 4 estimates 
+
+$pairwise_comparisons_2
+ contrast              estimate       SE  df z.ratio p.value
+ Control - Baseline   -6.18e-04 0.000374 Inf  -1.653  0.3488
+ Control - Sentences  -5.86e-04 0.000374 Inf  -1.568  0.3972
+ Control - Words      -2.13e-03 0.000374 Inf  -5.695  <.0001
+ Baseline - Sentences  3.19e-05 0.000374 Inf   0.086  0.9998
+ Baseline - Words     -1.51e-03 0.000374 Inf  -4.042  0.0003
+ Sentences - Words    -1.54e-03 0.000374 Inf  -4.127  0.0002
+
+Results are averaged over the levels of: llm 
+Degrees-of-freedom method: asymptotic 
+P value adjustment: tukey method for comparing a family of 4 estimates 
+
