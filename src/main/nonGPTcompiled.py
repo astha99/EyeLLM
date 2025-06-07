@@ -12,21 +12,13 @@ from similarityScores import (
     calculate_semantic_similarity, calculate_similarity, calculate_jaccard_similarity, calculate_f1_score
 )
 import openai
-openai.api_key = "OPENAI_API_KEY"
+openai.api_key = "########"
 model_name = "mistral"  # mistral
 
 # Define input paths
 json_files = glob.glob("data/json/*.json")
 output_dir = "../../results/BEA/mistral/"
 os.makedirs(output_dir, exist_ok=True)
-
-# Remove common leading phrases from model completions
-common_prefixes = [
-    "Here's a possible continuation:",
-    "Here is a possible continuation:",
-    "Sure, here's a possible continuation:",
-    "Continuing the text:"
-]
 
 # Process JSON files for multiple iterations
 num_iterations = 10
