@@ -94,7 +94,7 @@ for iteration in range(1, num_iterations + 1):
     compiled_output_file = f"{iteration_output_dir}/compiled_results.csv"
     output_file_full = f"{iteration_output_dir}/output_full.csv"
     scores_data = []
-    all_data = []
+    # all_data = []
 
     for _, row in id_df.iterrows():
         participant_id = row["Participant"]
@@ -106,18 +106,18 @@ for iteration in range(1, num_iterations + 1):
                 df.insert(0, "participant_id", participant_id)
                 df.insert(2, "Topic", col)
                 df.insert(3, "example_id", range(1, len(df) + 1))
-                all_data.append(df)
+                # all_data.append(df)
                 df.drop(columns=["Pretext0", "Pretextn", "Student_Completion", "Pretext Only", "Pretext + Words",
                                  "Pretext + Sentences", "Control"], errors="ignore", inplace=True)
                 scores_data.append(df)
             else:
                 print(f"Iteration {iteration} - Warning: {input_file} not found.")
 
-    if all_data:
-        final_df_full = pd.concat(all_data, ignore_index=True)
-        final_df_full.to_csv(output_file_full, index=False)
-        print(f"Iteration {iteration} - Saved full results to {output_file_full}")
-        data_all_iterations.append(final_df_full)
+    # if all_data:
+    #     final_df_full = pd.concat(all_data, ignore_index=True)
+    #     final_df_full.to_csv(output_file_full, index=False)
+    #     print(f"Iteration {iteration} - Saved full results to {output_file_full}")
+    #     data_all_iterations.append(final_df_full)
 
     if scores_data:
         final_df = pd.concat(scores_data, ignore_index=True)
@@ -127,12 +127,7 @@ for iteration in range(1, num_iterations + 1):
 
 
 # Save final compiled results from all iterations
-final_output_full_all = os.path.join(output_dir, "output_full_all.csv")
 final_compiled_output_all = os.path.join(output_dir, "compiled_results_all.csv")
-
-if data_all_iterations:
-    pd.concat(data_all_iterations, ignore_index=True).to_csv(final_output_full_all, index=False)
-    print(f"Saved all full results to {final_output_full_all}")
 
 if scores_all_iterations:
     compiled_results_all_df = pd.concat(scores_all_iterations, ignore_index=True)
